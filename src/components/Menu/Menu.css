@@ -99,3 +99,13 @@
     text-decoration: none;
 }
 
+@media (max-width: 600px) {
+    .conteiner__menu{
+        width: 350px ;
+    }
+
+    .menu-header img{
+        width: 100px;
+    }
+}
+
