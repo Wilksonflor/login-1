@@ -1,12 +1,14 @@
 import "./Menu.css";
 import { useState } from "react";
 import usuarios from "../../Usuarios";
+// import { CriarConta } from "../criarConta/CriarConta";
 
 export default function Menu() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [logado, setLogado] = useState(false);
   const [usuarioLogado, setUsuarioLogadl] = useState(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -14,6 +16,7 @@ export default function Menu() {
       const usuarioEncontrado = usuarios.find(
         (user) => user.email === email && user.senha === password
       );
+
       if (usuarioEncontrado) {
         setLogado(true);
         setUsuarioLogadl(usuarioEncontrado);
@@ -60,8 +63,13 @@ export default function Menu() {
                     Acessar
                   </button>
                 </form>
-                <a href="#">Crie uma Conta</a>
-                <a href="#">Esqueceu a Senha?</a>
+                {/* {rotas.map((data, index) => (
+                  <div key={index}>
+                    <a href={data.url}></a>
+                    <a href={data.url}>{data.nome}</a>
+                  </div>
+                ))} */}
+                <a href="#">Criar conta</a>
               </>
             )}
           </div>
