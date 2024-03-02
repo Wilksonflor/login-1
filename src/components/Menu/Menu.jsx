@@ -1,19 +1,24 @@
 import "./Menu.css";
 import { useState } from "react";
+import usuarios from "../../Usuarios";
 
 export default function Menu() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [logado, setLogado] = useState(false);
-
+  const [usuarioLogado, setUsuarioLogadl] = useState(null);
   const handleSubmit = (e) => {
     e.preventDefault();
 
     try {
-      if (email === "caio@email.com" && password === "senha123") {
+      const usuarioEncontrado = usuarios.find(
+        (user) => user.email === email && user.senha === password
+      );
+      if (usuarioEncontrado) {
         setLogado(true);
+        setUsuarioLogadl(usuarioEncontrado);
       } else {
-        alert("Credenciais inválidas!");
+        alert("credenciais inválidas");
       }
     } catch (error) {
       console.log(error);
@@ -28,9 +33,8 @@ export default function Menu() {
             <img src="src\assets\imgs\logo.png" alt="" />
           </div>
           <div className="datalog">
-            
             {logado ? (
-              <h1>Bem-vindo!</h1>
+              <h1>Bem-vindo, {usuarioLogado.nome}!</h1>
             ) : (
               <>
                 <h1>Entrar</h1>
